@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Product>
+<section class="section" id="men">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <h2>@ViewBag.CatName</h2>
+                    <span>Sản phẩm được yêu thích nhất</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="men-item-carousel">
+                    <div class="owl-men-item owl-carousel">
+                       @foreach (var prod in Model)
+                        {
+                            <div class="item">
+                                <div class="thumb">
+                                    <div class="hover-content">
+                                        <ul>
+                                            <li><a href="~/san-pham/@prod.Name.ToLower()"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="~/san-pham/@prod.Name.ToLower()"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="@Url.Action("AddToCart", "Giohang", new { id = prod.Id })"><i class="fa fa-shopping-cart"></i></a></li>
+                          
+                                        </ul>
+                                    </div>
+                                    <img src="~/Public/images/product/@prod.Img" alt="">
+                                </div>
+                                <div class="down-content">
+                                    <h4>@prod.Name</h4>
+                                    <div class="d-flex justify-content-between">
+                                        <span>@prod.Pricesale</span>
+                                        <span class="pricesale">@prod.Price</span>
+                                    </div>
+                                    
+                                    <ul class="stars">
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                        <li><i class="fa fa-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

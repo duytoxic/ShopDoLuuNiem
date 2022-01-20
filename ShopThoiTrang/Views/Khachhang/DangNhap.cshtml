@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@using (Html.BeginForm("DangNhap", "Khachhang", FormMethod.Post))
+{
+    <div class="form-user-login">
+        <form>
+            <div class="form-group">
+                <label for="username">Tên đăng nhập: </label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="Tên đăng nhập" />
+            </div>
+
+            <div class="form-group">
+                <label for="pw">Mật khẩu: </label>
+                <input type="password" id="pw" name="pw" class="form-control" placeholder="Mật khẩu" />
+            </div>
+            <div class="text-center">
+                <input type="submit" value="Đăng nhập" class="button--primary" />
+            </div>
+
+        </form>
+    </div>
+}
+

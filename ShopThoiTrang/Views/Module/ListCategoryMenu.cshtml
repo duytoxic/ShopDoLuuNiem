@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Category>
+
+    <li class="submenu">
+        <a href="submenu">Sản phẩm</a>
+        <ul>
+           @foreach(var cats in Model)
+            {
+                <li><a href="~/loai-san-pham/@cats.Slug">@cats.Name</a></li>
+            }
+        </ul>
+    </li>

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/Public/css/paper-dashboard.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Public/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Public/demo/demo.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/LayoutAdmin.css" rel="stylesheet" />
+    <link href="~/Public/assets/css/all.min.css" rel="stylesheet" />
+
+    <script src="~/Areas/Admin/Public/js/jquery.min.js"></script>
+    <script src="~/Areas/Admin/Public/js/popper.min.js"></script>
+    <script src="~/Areas/Admin/Public/js/bootstrap.min.js"></script>
+    <script src="~/Areas/Admin/Public/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Areas/Admin/Public/demo/demo.js"></script>
+    <script src="~/Areas/Admin/Public/js/paper-dashboard.min.js"></script>
+    @RenderSection("head", required: false)
+</head>
+<body>
+
+        <div class="content">
+            @RenderBody()
+        </div>
+
+    <script src="~/Areas/Admin/Public/js/custom.js"></script>
+    @RenderSection("footer", required: false)
+</body>
+</html>

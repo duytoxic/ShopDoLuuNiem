@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@if (Model != null)
+ {
+    <div class="container mt-5 mb-5">
+        
+        <div class="section-title">
+            <h3 class="text-center mb-5 mt-5">Giỏ hàng của bạn</h3>
+            <a class="button--outline text-link-right" href="@Url.Action("Index", "Trangchu")">Tiếp tục mua sắm</a>
+        </div>
+       @using (Html.BeginForm("UpdateCart", "Giohang", FormMethod.Post))
+        {
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng tiền</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ int countItem = 1;}
+                @{ double tongtien = 0;}
+                @foreach (var cart in Model)
+                {
+                    <tr>
+
+                        <td>@countItem</td>
+                        <td style="width: 100px;" class="image-cart">
+                            <img src="~/Public/images/product/@cart.Image" alt="photo" />
+                        </td>
+                        <td>@cart.Name</td>
+                        <td>@cart.Price đ</td>
+                        <td>
+                            <input type="number" name="quantity" class="form-control" value="@cart.Quantity" min="1" />
+                        </td>
+                        <td>@(cart.Price * cart.Quantity) đ </td>
+                        <td class="text-center">
+                            <a href="@Url.Action("RemoveCartItem", "Giohang", new { id = cart.ProductId })" class="text-danger remove-cart"><i class="fad fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                    countItem += 1;
+                    tongtien += cart.Price * cart.Quantity;
+                }
+
+            </tbody>
+            <tfoot>
+                <tr>
+
+                    <td colspan="5" class="text-left font-weight-bold">
+                        Tổng
+                    </td>
+                    <td colspan="2" class="text-center font-weight-bold">
+                        @tongtien đ
+                    </td>
+                </tr>
+            </tfoot>
+            </table>
+
+            <div class="list-button">
+                <input type="submit" name="update" class="button--primary" value="Cập nhật" />
+                <a href="@Url.Action("RemoveAllCart", "Giohang")" class="button--primary">Làm trống giỏ hàng</a>
+                <a href="@Url.Action("ThanhToan", "Giohang")" class="button--outline">Thanh Toán</a>
+            </div>
+        }
+    </div>
+    }
+else
+{
+    <div class="container mt-5">Giỏ hàng đang trống</div>
+}
+
+

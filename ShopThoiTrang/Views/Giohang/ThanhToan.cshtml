@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.CartItem>
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+@{
+    var user = ViewBag.user;
+}
+@using (Html.BeginForm("CheckOut", "Giohang", FormMethod.Post))
+{
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <form class="form-check-out">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Họ và tên <abbr>*</abbr> </label>
+                                <input type="text" name="name" id="name" value="@user.FullName" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="email">Email <abbr>*</abbr> </label>
+                                <input type="text" name="email" id="email" value="@user.Email" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="phone">Số điện thoại <abbr>*</abbr> </label>
+                                <input type="text" name="phone" id="phone" value="@user.Phone" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="address">Địa chỉ nhận hàng <abbr>*</abbr> </label>
+                                <input type="text" name="address" id="address" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="name">Ghi chú</label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <div class="checkout-right">
+                    <h3 class="text--title mb-3">Đơn hàng của bạn</h3>
+                    @{ double tongtien = 0;}
+                    @foreach (var cart in Model)
+                    {
+                        <div class="checkout-item d-flex justify-content-between align-items-center">
+                            <p class="checkout-item__name">@cart.Quantity x @cart.Name</p>
+                            <p>@(cart.Quantity * cart.Price) đ </p>
+                        </div>
+
+                        tongtien += cart.Price * cart.Quantity;
+                    }
+                    <hr />
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="total-price__title">Giá tiền</p>
+                        <p>@tongtien đ</p>
+                    </div>
+                    <hr />
+
+                    <div class="text-center">
+                        <input type="submit" value="Đặt hàng" name="checkout" class="button--primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   }

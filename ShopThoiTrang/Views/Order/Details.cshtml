@@ -1,0 +1,84 @@
+﻿@model ShopThoiTrang.Models.Order
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="bill-container">
+                <div class="bill-container__header d-flex justify-content-between">
+                    <div class="bill-container__header-left d-flex align-items-center">
+                        <div class="header-left-item">
+                            <span class="font-weight-bold name-tag-item">
+                                thoitrangn7
+                            </span>
+                        </div>
+
+                        <button class="btn-chat header-left-item">
+                            <i class="fas fa-comment-alt-music"></i>Chat
+                        </button>
+                        <a href="#" class="btn-view-shop d-flex align-items-center">
+                            <i class="fal fa-store"></i>
+                            <span>Xem shop</span>
+                        </a>
+                    </div>
+
+                    <div class="bill-container__header-right d-flex align-items-center">
+                        <p class="text-uppercase">Đã hủy</p>
+                    </div>
+                </div>
+
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <div class="bill-container__product">
+                        <div class="bill-container__product-img">
+                            <img src="https://cf.shopee.vn/file/ebdb8b370cc2f7a7d90b0b8911d53d20_tn"
+                                 alt="" />
+                        </div>
+                        <div class="bill-container__product-info">
+                            <h6>
+                                [Mã MABR30FA giảm 10% tối đa 30k đơn 99k] Áo thun Unisex N7
+                                Basic Tee phông trơn nam nữ tay lỡ oversize form rộng 12 màu
+                            </h6>
+                            <p class="product-type">Phân loại hàng: Trắng,L</p>
+                            <p class="product-quantity">x1</p>
+                            <a href="#">7 ngày trả hàng</a>
+                        </div>
+                        <a href="#" class="bill-container__product-price">
+                            <p class="price">140.000</p>
+                            <p class="price-sale">109.000</p>
+                        </a>
+                    </div>
+                }
+
+
+
+                <div class="bill-container__footer">
+                    <div class="
+                    bill-container__footer-total-price
+                    d-flex
+                    justify-content-end
+                    align-items-center
+                  ">
+                        <i class="far fa-sack-dollar"></i>
+                        <p>Tổng số tiền:</p>
+                        <span>170.000</span>
+                    </div>
+                    <div class="bill-container__footer-button">
+                        <p>Bạn đã hủy</p>
+                        <div class="list-button">
+                            <a href="#"
+                               class="list-button__btn list-button__btn-primary">Mua lại</a>
+                            <a href="#"
+                               class="list-button__btn list-button__btn-outline">Liên hệ người bán</a>
+                            <a href="#"
+                               class="list-button__btn list-button__btn-outline">chi tiết đơn hủy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

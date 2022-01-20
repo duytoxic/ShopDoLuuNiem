@@ -1,0 +1,72 @@
+﻿@model IEnumerable<ShopThoiTrang.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="container">
+    <h3 class="text-center my-5">Lịch sử mua hàng</h3>
+    @{
+        if (Model != null)
+        {
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center">STT</th>
+                        <th>Thời gian</th>
+                        <th>Người nhận</th>
+                        <th>Ghi chú</th>
+                        <th>Trạng thái</th>
+                        <th>Xem chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ int countItem = 1;}
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@countItem</td>
+                        <td>@String.Format("{0:dd/MM/yyyy:}", item.Date)</td>
+                        
+                        <td>@item.UserId</td>
+                        <td>@item.Note</td>
+                        <td>
+                            @{
+                                if (item.Status == 1)
+                                {
+                                    <p>Đang xử lý</p>
+                                }
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a class="button--outline" href="@Url.Action("Details", "Order", new { @id = item.Id })">Xem</a>
+                            <a class="button--primary" href="@Url.Action("Delete", "Order", new { @id = item.Id })">Hủy</a>
+                        </td>
+                    </tr>
+                        countItem++;
+                    }
+                
+                </tbody>
+            </table>
+
+        }
+        else
+        {
+        <div class="row mt-4">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-10">
+                <div class="bill-container__empty">
+                    <div class="bill-container__empty-content">
+                        <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/5fafbb923393b712b96488590b8f781f.png"
+                                alt="*" />
+                        <p>Chưa có đơn hàng</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+}
+        </div>
+
